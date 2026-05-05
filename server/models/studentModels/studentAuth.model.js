@@ -25,7 +25,7 @@ const studentAuthSchema = new mongoose.Schema({
     }
 }, { timestamps: true});
 
-//Auto update email in student profile when email in student auth is updated
+//Auto update email in student profile, when email in student auth is updated
 studentAuthSchema.post('findOneAndUpdate', async function(doc){
     if(doc){
         await mongoose.model('student_profile').findOneAndUpdate(
