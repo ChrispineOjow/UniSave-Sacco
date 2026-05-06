@@ -24,8 +24,40 @@ connectDB().then(()=>{
         console.log(`Server is running on localhost:${PORT}`);
     });
 
+    const cleanup = async (signal) => {
+        console.log(`\n${signal} received, closing server and DB connection...`);
+     
+        server.close(()=>{
+            console.log('HTTP server closed');
+        });
+
+        await mongoose.connection.close();
+        console.log('DB connection closed');
+
+        process.exit(0);
+    }
+
+    process.once('SIGNIT',() => cleanup('SIGNIT') );
+    process.once('SIGTERM',() => cleanup('SIGTERM'));
+    process.once('SIGQUIT', () => cleanup('SIGQUIT'));
+
+    process.once('uncaughtException', (error)=>{
+
+        console.error('Uncaught Exception: ', error.message);
+        cleanup('uncaughtException');
+
+    })
+
+    process.once('unhandledRejection', (reason)=>{
+        console.error('Unhandled Rejection: ', reason);
+        cleanup('unhandledRejection');
+    });
+
+
+
 }).catch((error)=>{
     console.log('DB connection failed:  ', error.message);
+    process.exit(1);
 })
 
 
