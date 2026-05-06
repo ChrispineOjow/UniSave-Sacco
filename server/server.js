@@ -11,13 +11,13 @@ const PORT = process.env.PORT || 5000;
 
 //Middleware
 app.use(express.json());
+
 //Routes
 app.get('/', (req, res)=>{
     res.json({ message: 'Welcome to UniSave Sacco System API' });
 })
 app.use('/api/students/auth', studentAuthRouter);
 app.use('/api/students/profile', studentProfileRouter);
-
 
 connectDB().then(()=>{
     app.listen(PORT, ()=>{
@@ -53,12 +53,7 @@ connectDB().then(()=>{
         cleanup('unhandledRejection');
     });
 
-
-
 }).catch((error)=>{
     console.log('DB connection failed:  ', error.message);
     process.exit(1);
-})
-
-
-
+});
