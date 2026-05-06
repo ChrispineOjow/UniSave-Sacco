@@ -37,7 +37,7 @@ connectDB().then(()=>{
         process.exit(0);
     }
 
-    process.once('SIGNIT',() => cleanup('SIGNIT') );
+    process.once('SIGINIT',() => cleanup('SIGINIT') );
     process.once('SIGTERM',() => cleanup('SIGTERM'));
     process.once('SIGQUIT', () => cleanup('SIGQUIT'));
 
