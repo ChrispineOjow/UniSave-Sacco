@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import 'dotenv/config';
 import connectDB from './config/db.js';
 import studentAuthRouter from './routers/studentRouters/studentAuth.router.js';
+import studentProfileRouter from './routers/studentRouters/studentProfile.router.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.get('/', (req, res)=>{
     res.json({ message: 'Welcome to UniSave Sacco System API' });
 })
 app.use('/api/students/auth', studentAuthRouter);
+app.use('/api/students/profile', studentProfileRouter);
 
 
 connectDB().then(()=>{

@@ -9,7 +9,6 @@ const studentProfileSchema = new mongoose.Schema({
     },
     nationalId:{
         type: String,
-        required: true,
         unique: true
     },
     firstName:{
@@ -25,7 +24,7 @@ const studentProfileSchema = new mongoose.Schema({
         required:true
     },
     email: {
-        required: true,
+        type: String,
         unique: true
     },
     university:{

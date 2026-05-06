@@ -2,11 +2,12 @@ import StudentAuth from "../../models/studentModels/studentAuth.model.js";
 import bcrypt from 'bcrypt';
 
 
-//MetaMap Verification
+// Simulated National ID verification function
 const verifyNationalId = async (nationalId) => {
     
     const isValidFormat = /^\d{8}$/.test(nationalId);
     return isValidFormat;
+    
 };
 
 export const registerStudent = async (req, res)=>{
