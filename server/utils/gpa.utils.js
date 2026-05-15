@@ -7,7 +7,7 @@ const gpaRank = {
 };
 
 function studentMeetsGPARequirement(studentGPA, requiredGPA){
-    if(!requiredGPA) return true;
+    if(!requiredGPA || requiredGPA === 'All') return true;
     return studentGPA >= requiredGPA;
 }
 
