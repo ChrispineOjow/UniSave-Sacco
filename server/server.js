@@ -27,6 +27,10 @@ connectDB().then(()=>{
     const cleanup = async (signal) => {
         console.log(`\n${signal} received, closing server and DB connection...`);
      
+        const server = app.listen(PORT, ()=>{
+            console.log(`Server is running on localhost:${PORT}`);
+        });
+
         server.close(()=>{
             console.log('HTTP server closed');
         });

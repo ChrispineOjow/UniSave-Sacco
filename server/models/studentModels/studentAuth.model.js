@@ -10,8 +10,7 @@ const studentAuthSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
-        match: [/^\S+@\S+\.\S+$/, 'Please fill a valid email address']
+        unique: true
     },
     password:{
         type:String,
@@ -31,7 +30,10 @@ studentAuthSchema.post('findOneAndUpdate', async function(doc){
     if(doc){
         await mongoose.model('student_profile').findOneAndUpdate(
             { studentAuthId: doc._id},
-            {email: doc.email}
+            {
+                email: doc.email,
+                nationalId: doc.nationalId
+            }
         );
     }
 });

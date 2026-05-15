@@ -10,6 +10,11 @@ const verifyNationalId = async (nationalId) => {
     
 };
 
+const verifyEmail = async (email)=> {
+    const validateEmail = (email) => /^\S+@\S+\.\S+$/.test(email);
+    return validatedEmail(email);
+}
+
 export const registerStudent = async (req, res)=>{
     try{
 
