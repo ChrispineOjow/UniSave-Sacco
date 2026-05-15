@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import StudentAuth from '../models/studentModels/studentAuth.model.js';
+import Admin from '../models/adminModels/admin.model.js';
 
 // Middleware to protect routes for students
 export const protectStudent = async (req, res, next) => {
@@ -42,7 +43,7 @@ export const protectStudent = async (req, res, next) => {
 export const protectAdmin = async (req, res, next) => {
     try{
 
-        const token = req.header.authorization?.split(' ')[1];
+        const token = req.headers.authorization?.split(' ')[1];
         if(!token){
             return res.status(401).json(
                 {

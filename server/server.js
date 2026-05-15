@@ -19,7 +19,7 @@ app.get('/', (req, res)=>{
 })
 app.use('/api/students/auth', studentAuthRouter);
 app.use('/api/students/profile', studentProfileRouter);
-app.use('/api/admins', adminRouter);
+app.use('/api/admin', adminRouter);
 
 connectDB().then(()=>{
     app.listen(PORT, ()=>{
