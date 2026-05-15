@@ -1,9 +1,9 @@
 const gpaRank = {
-    'A': 5,
-    'B': 4,
-    'C': 3,
-    'D': 2,
-    'F': 1
+    'A': 4.0,
+    'B': 3.0,
+    'C': 2.0,
+    'D': 1.0,
+    'F': 0.0
 };
 
 function studentMeetsGPARequirement(studentGPA, requiredGPA){
