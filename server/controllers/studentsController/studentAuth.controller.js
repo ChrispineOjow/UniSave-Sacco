@@ -5,16 +5,8 @@ import jwt from 'jsonwebtoken';
 
 
 
-// Simulated National ID verification function
-const verifyNationalId = async (nationalId) => {
-    
-    const isValidFormat = /^\d{8}$/.test(nationalId);
-    return isValidFormat;
-    
-};
-
+const verifyNationalId = (nationalId)=> /^\d{8}$/.test(nationalId);
 const verifyEmail = (email) => /^\S+@\S+\.\S+$/.test(email);
-const isValidEmail = verifyEmail(email);
 
 
 export const registerStudent = async (req, res)=>{

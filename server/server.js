@@ -4,6 +4,7 @@ import 'dotenv/config';
 import connectDB from './config/db.js';
 import studentAuthRouter from './routers/studentRouters/studentAuth.router.js';
 import studentProfileRouter from './routers/studentRouters/studentProfile.router.js';
+import adminRouter from './routers/adminRouters/admin.route.js';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.get('/', (req, res)=>{
 })
 app.use('/api/students/auth', studentAuthRouter);
 app.use('/api/students/profile', studentProfileRouter);
+app.use('/api/admins', adminRouter);
 
 connectDB().then(()=>{
     app.listen(PORT, ()=>{
