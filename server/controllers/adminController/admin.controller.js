@@ -122,7 +122,7 @@ export const approveStudent = async (req, res)=>{
 
         const {studentId} = req.params;
 
-        const student = await StudentAauth.findById(studentId);
+        const student = await StudentAuth.findById(studentId);
         if(!student){
             return res.status(404).json(
                 {

@@ -93,7 +93,7 @@ export const loginStudent = async (req, res)=>{
         }
 
         //Check Status of account
-        if (student.accountStatus !== 'pending'){
+        if (student.accountStatus === 'pending'){
             return res.status(403).json({
                 message: 'Account is pending admin approval'
             })
