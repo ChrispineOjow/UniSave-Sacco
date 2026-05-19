@@ -32,7 +32,7 @@ export const createStudentProfile = async (req, res)=>{
                 });
         };
 
-        if(authStudent.accountStatus !== 'Approved'){
+        if(authStudent.accountStatus !== 'approved'){
             return res.status(403).json(
                 {
                     message: 'Account not yet approved. Please wait for approval'
@@ -64,7 +64,7 @@ export const createStudentProfile = async (req, res)=>{
             gpa,
             county,
             constituency,
-            disablity: disability ?? false, // Deafulting to false if it is not provided
+            disability: disability ?? false, // Deafulting to false if it is not provided
             MTI_Score,
             phoneNumber
         });
@@ -82,5 +82,67 @@ export const createStudentProfile = async (req, res)=>{
             message: 'Error creating student profile',
             error: error.message
         });
+    }
+}
+
+export const getMyProfile = async (req, res)=>{
+    try{
+
+        const profile = await StudentProfile.findOne({
+            studentAuthId: req.student._id
+        })
+
+        if(!profile){
+            return res.status(404).json({
+                message: 'Profile not found. Please complete your profile'
+            });
+        }
+
+        res.status(200).json(
+            {
+                profile
+            }
+        )
+
+    }catch(error){
+
+        res.status(500).json(
+            {
+                message: "Error fetching profile",
+                error: error.message
+            }
+        )
+
+    }
+}
+
+export const updateStudentProfile = async (req, res)=>{
+    try{
+
+        const profile = await StudentProfile.findOneAndUpdate(
+            {studentAuthId: req.student._id},
+            {$set: req.body},
+            {returnDocument: 'after', runValidators: true}
+        );
+
+        if(!profile){
+            return res.status(404).json({
+                message: "Profile not found"
+            });
+        }
+
+        return res.status(200).json({
+                message: "Profile updated successfully",
+                profile
+            })
+
+
+    }catch(error){
+
+        res.status(500).json({
+            message: "Error updating profile",
+            error: error.message
+        })
+
     }
 }

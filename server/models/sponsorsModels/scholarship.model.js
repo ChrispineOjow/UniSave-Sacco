@@ -13,7 +13,7 @@ const ScholarshipsSchema = new mongoose.Schema({
     logoUrl:{type:String},
 
     //Eligibility 
-    elegibility:{
+    eligibility:{
         mtiBand:{
             type:String,
             enum: ['Vulnerable', 'Extremely Needy', 'Needy', 'Less Needy', 'All'],
@@ -21,11 +21,6 @@ const ScholarshipsSchema = new mongoose.Schema({
         },
         mtiScoreMin: {type: Number, default:0},
         mtiScoreMax: {type: Number, default:100},
-        minGrade: {
-            type:String,
-            enum: ['A','B','C','D','Fail', null],
-            default: null
-        },
         minGPA: {type: Number, default: null},
         
         yearOfStudy: {type:[Number], default: [1,2,3,4,5,6]},
@@ -33,7 +28,7 @@ const ScholarshipsSchema = new mongoose.Schema({
         university: {type: [String], default:['All']},
         nationality: {type: String, default: 'Kenyan'},
         county: {type: String, default: 'All'},
-        constintuency: {type: String, default: 'All'},
+        constituency: {type: String, default: 'All'},
         gender: {type: String, enum:['Male', 'Female', 'All'], default: 'All'},
         disability: {type: Boolean, default: null},
         ageMin: {type: Number, default: 18},
@@ -60,7 +55,7 @@ const ScholarshipsSchema = new mongoose.Schema({
         openingDate: {type: Date},
         deadline: {type: Date, required: true},
         announcementDate: {type: Date},
-        acadeicYear: {type: String}
+        academicYear: {type: String}
     },
 
 
@@ -88,13 +83,13 @@ const ScholarshipsSchema = new mongoose.Schema({
     isFeatured: {type: Boolean, default: false},
     lastScrapedAt:{type: Date}
 
-}, {timestaps:true});
+}, {timestamps:true});
 
 //Indexing for faster notifications
 ScholarshipsSchema.index({'dates.deadline': 1});
 
 //Indexing category and eligibility for faster matching
-ScholarshipsSchema.index({'category': 1, 'elegibility.mtiBand': 1});
+ScholarshipsSchema.index({'category': 1, 'eligibility.mtiBand': 1});
 
 const Scholarship = mongoose.model('scholarship', ScholarshipsSchema);
 export default Scholarship;

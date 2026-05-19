@@ -30,10 +30,8 @@ studentAuthSchema.post('findOneAndUpdate', async function(doc){
     if(doc){
         await mongoose.model('student_profile').findOneAndUpdate(
             { studentAuthId: doc._id},
-            {
-                email: doc.email,
-                nationalId: doc.nationalId
-            }
+            {email: doc.email,},
+            {returnDocument: 'after'}
         );
     }
 });

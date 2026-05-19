@@ -1,6 +1,7 @@
 import Admin from "../../models/adminModels/admin.model.js";
 import StudentAuth from "../../models/studentModels/studentAuth.model.js";
 import StudentProfile from "../../models/studentModels/studentProfile.model.js";
+import Scholarship from "../../models/sponsorsModels/scholarship.model.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -62,6 +63,24 @@ export const loginAdmin = async (req, res)=>{
             }
         )
         
+    }
+}
+
+//Logout From admin
+
+export const logoutAdmin = async (req, res) => {
+
+    try{
+
+        // logout is handled on the client side
+        message: "Logout Successful"
+
+    }catch(error){
+
+        res.status(500).json({
+            message: "Error logging out",
+            error: error.message
+        })
     }
 }
 
@@ -242,7 +261,7 @@ export const createAdmin = async (req, res)=> {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newAdmin = new Admin.create({
+        const newAdmin =await Admin.create({
             email,
             password: hashedPassword,
             role: role || 'moderator'
@@ -266,5 +285,168 @@ export const createAdmin = async (req, res)=> {
             }
         )
 
+    }
+}
+
+// Add Scholarship
+export const addScholarship = async  (req, res)=>{
+
+    try{
+
+        const scholarship = new Scholarship(req.body);
+        await scholarship.save();
+
+        res.status(201).json(
+            {
+                message: 'Scholarship added successfully',
+                scholarship
+            }
+        );
+
+
+    }catch(error){
+
+        res.status(500).json(
+            {
+                message: "Error adding scholarship",
+                error: error.message
+            }
+        )
+
+
+    }
+}
+
+
+//Update Scholarship
+
+export const updateScholarship = async (req, res)=>{
+    try{
+
+        const {id} = req.params;
+
+        const scholarship = await Scholarship.findByIdAndUpdate(
+            id,
+            {$set: req.body},
+            {returnDocument: 'after', runValidators: true}
+        );
+
+        if(!scholarship){
+            return res.status(404).json(
+                {
+                    message: "Scholarship not found"
+                }
+            )
+        }
+
+        res.status(200).json(
+            {
+                message : "Scholarship Updated successfully",
+                scholarship
+            }
+        )
+
+    }catch(error){
+
+        res.status(500).json({
+            message: "Error updating scholarship",
+            error: error.message
+        })
+
+    }
+}
+
+//Delete Scholarship
+export const deleteScholarship = async(req, res)=> {
+
+    try{
+
+        const {id} = req.params;
+        const scholarship = await Scholarship.findByIdAndDelete(id);
+
+        if(!scholarship){
+            return res.status(404).json(
+                {
+                    message: "Scholarship not found"
+                }
+            )
+        };
+
+        res.status(200).json(
+            {
+                message: "Scholarship deleted successfully"
+            }
+        )
+
+
+    }catch(error){
+
+        res.status(500).json(
+            {
+                message : "Scholarship was not deleted an error occured",
+                error: error.message
+            }
+        )
+    }
+}
+
+// Verify Scholarship
+export const verifyScholarship = async (req, res) => {
+    try{
+
+        const {id} = req.params;
+
+        const scholarship = await Scholarship.findByIdAndUpdate(
+            id,
+            {isVerified: true},
+            {returnDocument: 'after'}
+        );
+
+        if(!scholarship){
+            return res.status(404).json(
+                {
+                    message: "Scholarship not found"
+                }
+            )
+        }
+
+        res.status(200).json(
+            {
+                message: "Scholarship verified successfully",
+                scholarship
+            }
+        )
+
+
+    }catch(error){
+
+        res.status(500).json(
+            {
+                message: "Error verifying scholarship",
+                error: error.message
+            }
+        )
+    }
+}
+
+
+// Get all Scholrship Including the Unverified ones
+
+export const getAllScholarshipsAdmin = async(req, res)=> {
+
+    try{
+        const scholarships = await Scholarship.find().sort({createdAt: -1});
+
+        res.status(200).json({
+            count: scholarships.length,
+            scholarships
+        })
+
+
+    }catch(error){
+        res.status(500).json({
+            message: "Error getting all Scholarships",
+            error: error.message
+        })
     }
 }
