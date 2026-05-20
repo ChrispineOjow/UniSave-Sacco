@@ -1,12 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import connectDB from './config/db.js';
+import './config/email.config.js'
+import connectDB from './config/db.config.js';
 import studentAuthRouter from './routers/studentRouters/studentAuth.router.js';
 import studentProfileRouter from './routers/studentRouters/studentProfile.router.js';
 import adminRouter from './routers/adminRouters/admin.route.js';
 import scholarshipRouter from './routers/sponsorsRouters/scholarship.router.js';
 import applicationRouter from './routers/applicationRouters/application.router.js';
+import { startCronJobs } from './services/cron.service.js';
 
 const app = express();
 
@@ -29,6 +31,8 @@ connectDB().then(()=>{
     app.listen(PORT, ()=>{
         console.log(`Server is running on localhost:${PORT}`);
     });
+
+    startCronJobs();
 
     const cleanup = async (signal) => {
         console.log(`\n${signal} received, closing server and DB connection...`);

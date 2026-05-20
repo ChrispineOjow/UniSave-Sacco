@@ -2,7 +2,8 @@ import Admin from "../../models/adminModels/admin.model.js";
 import StudentAuth from "../../models/studentModels/studentAuth.model.js";
 import StudentProfile from "../../models/studentModels/studentProfile.model.js";
 import Scholarship from "../../models/sponsorsModels/scholarship.model.js";
-import Application from "../../models/applicationModels/scholarshipApplication.models.js"
+import Application from "../../models/applicationModels/scholarshipApplication.models.js";
+import { sendWelcomeEmail } from "../../utils/email.utils.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -161,6 +162,8 @@ export const approveStudent = async (req, res)=>{
 
         student.accountStatus = 'approved';
         await student.save();
+
+        await sendWelcomeEmail(student.email, student.nationalId)
 
         res.status(200).json(
             {
