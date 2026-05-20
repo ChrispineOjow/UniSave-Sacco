@@ -2,6 +2,7 @@ import Admin from "../../models/adminModels/admin.model.js";
 import StudentAuth from "../../models/studentModels/studentAuth.model.js";
 import StudentProfile from "../../models/studentModels/studentProfile.model.js";
 import Scholarship from "../../models/sponsorsModels/scholarship.model.js";
+import Application from "../../models/applicationModels/scholarshipApplication.models.js"
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -448,5 +449,85 @@ export const getAllScholarshipsAdmin = async(req, res)=> {
             message: "Error getting all Scholarships",
             error: error.message
         })
+    }
+}
+
+//Update the application status to either Rejected or Approved
+export const updateApplicationStatus = async(req, res)=>{
+
+    try{
+
+        const{id} = req.params;
+        const {status}= req.body;
+
+        const allowedStatuses = ['Rejected', 'Approved']
+
+        if(!allowedStatuses.includes(status)){
+            return res.status(400).json(
+                {
+                    message: 'Admin can only update status to Approved or Rejected'
+                }
+            )
+        }
+
+        const application = await Application.findByIdAndUpdate(
+            id,
+            {status},
+            {returnDocument: 'after'}
+        );
+
+        if(!application){
+            return res.status(404).json({
+                message: "Application not found."
+            })
+        }
+
+        res.status(200).json(
+            {
+                message: `Application ${status} successfully`,
+                application
+            }
+        )
+
+
+    }catch(error){
+
+        res.status(500).json(
+            {
+                message: "Error updating application status",
+                error: error.message
+            }
+        )
+
+
+    }
+}
+
+//get All Applications
+
+export const getAllApplications = async(req, res)=> {
+    try{
+
+        const applications = await Application.find()
+                            .populate('studentId', 'firstName lastName email')
+                            .populate('scholarshipId', 'title provider')
+                            .sort({createdAt: -1})
+        
+        res.status(200).json(
+            {
+                count: applications.length,
+                applications
+            }
+        );
+
+
+
+    }catch(error){
+
+        res.status(500).json({
+            message: "Error fetching applications",
+            error: error.message
+        })
+
     }
 }

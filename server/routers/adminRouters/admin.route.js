@@ -10,7 +10,9 @@ import{
     updateScholarship,
     deleteScholarship,
     verifyScholarship,
-    getAllScholarshipsAdmin
+    getAllScholarshipsAdmin,
+    updateApplicationStatus,
+    getAllApplications
 } from '../../controllers/adminController/admin.controller.js';
 import {protectAdmin} from '../../middleware/auth.middleware.js';
 
@@ -31,5 +33,9 @@ adminRouter.get("/scholarships/all", protectAdmin, getAllScholarshipsAdmin);
 adminRouter.patch("/scholarships/update/:id", protectAdmin, updateScholarship);
 adminRouter.delete("/scholarships/delete/:id", protectAdmin, deleteScholarship);
 adminRouter.patch("/scholarships/verify/:id", protectAdmin, verifyScholarship);
+
+//Application routes
+adminRouter.patch("/applications/update/:id", protectAdmin, updateApplicationStatus);
+adminRouter.get('/applications/all', protectAdmin,getAllApplications);
 
 export default adminRouter;

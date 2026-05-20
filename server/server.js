@@ -6,6 +6,7 @@ import studentAuthRouter from './routers/studentRouters/studentAuth.router.js';
 import studentProfileRouter from './routers/studentRouters/studentProfile.router.js';
 import adminRouter from './routers/adminRouters/admin.route.js';
 import scholarshipRouter from './routers/sponsorsRouters/scholarship.router.js';
+import applicationRouter from './routers/applicationRouters/application.router.js';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use('/api/students/auth', studentAuthRouter);
 app.use('/api/students/profile', studentProfileRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/students/scholarships', scholarshipRouter);
+app.use('/api/students/applications',applicationRouter)
 
 connectDB().then(()=>{
     app.listen(PORT, ()=>{
