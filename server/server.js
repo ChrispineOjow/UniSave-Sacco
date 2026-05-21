@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config';
+import cors from 'cors';
 import './config/email.config.js'
 import connectDB from './config/db.config.js';
 import studentAuthRouter from './routers/studentRouters/studentAuth.router.js';
@@ -15,6 +16,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 //Middleware
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials:true
+}))
 app.use(express.json());
 
 //Routes
@@ -29,7 +34,7 @@ app.use('/api/students/applications',applicationRouter)
 
 connectDB().then(()=>{
     app.listen(PORT, ()=>{
-        console.log(`Server is running on localhost:${PORT}`);
+        console.log(`Server is running on http://localhost:${PORT}`);
     });
 
     startCronJobs();
