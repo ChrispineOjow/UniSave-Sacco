@@ -8,7 +8,7 @@ import {protectStudent} from "../../middleware/auth.middleware.js";
 
 const scholarshipRouter = express.Router();
 
-scholarshipRouter.get("/", protectStudent,getAllScholarships);
+scholarshipRouter.get("/",getAllScholarships);
 scholarshipRouter.get("/match", protectStudent, getMatchedSholarships);
 scholarshipRouter.get("/:id", protectStudent, getScholarshipById)
 

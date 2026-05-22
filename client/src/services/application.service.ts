@@ -35,7 +35,7 @@ export const getMyApplications = async () => {
     return response.data;
 };
 
-export const updateAapplicationStatus = async(
+export const updateApplicationStatus = async(
     id:string,
     data: {status: string, notes?:string}
 )=>{

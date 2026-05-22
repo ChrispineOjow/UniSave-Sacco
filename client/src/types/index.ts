@@ -20,7 +20,7 @@ export interface StudentProfile{
     email:string;
     university:string;
     course:string;
-    schoolRegistrationNummber: string;
+    schoolRegistrationNumber: string;
     gpa:number;
     county:string;
     constituency:string;
