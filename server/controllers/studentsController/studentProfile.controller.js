@@ -5,6 +5,13 @@ import StudentAuth from "../../models/studentModels/studentAuth.model.js";
 export const createStudentProfile = async (req, res)=>{
     try{
 
+        const studentAuthId = req.student?._id || req.body.studentAuthId;
+        if(!studentAuthId){
+            return res.status(401).json({
+                message: "Unaouthorized. Valid student session required"
+            })
+        }
+        
         const {
             studentAuthId, 
             firstName, 
@@ -78,6 +85,8 @@ export const createStudentProfile = async (req, res)=>{
 
 
     }catch(error){
+
+        console.error("CRASH LOG FOR CREATE_PROFILE: ", error);
         res.status(500).json({
             message: 'Error creating student profile',
             error: error.message
