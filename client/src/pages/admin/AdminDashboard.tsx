@@ -68,7 +68,7 @@ const AdminDashboard = () => {
         <AdminLayout>
             <div className="space-y-6">
 
-                {/* ── Header ─────────────────────────────────── */}
+                {/* Header */}
                 <div>
                     <h1 className="text-2xl font-bold text-primary">
                         Admin Dashboard
@@ -78,7 +78,7 @@ const AdminDashboard = () => {
                     </p>
                 </div>
 
-                {/* ── Stats Cards ────────────────────────────── */}
+                {/* Stats Cards */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
                         {
@@ -133,7 +133,7 @@ const AdminDashboard = () => {
 
                 <div className="grid lg:grid-cols-2 gap-6">
 
-                    {/* ── Pending Students ───────────────────── */}
+                    {/* Pending Students */}
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between pb-3">
                             <CardTitle className="text-base font-semibold text-primary">
@@ -182,7 +182,7 @@ const AdminDashboard = () => {
                         </CardContent>
                     </Card>
 
-                    {/* ── Quick Actions ──────────────────────── */}
+                    {/* Quick Actions */}
                     <Card>
                         <CardHeader className="pb-3">
                             <CardTitle className="text-base font-semibold text-primary">

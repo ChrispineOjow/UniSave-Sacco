@@ -46,7 +46,7 @@ const categoryColor: Record<string, string> = {
     University: 'bg-pink-100 text-pink-700'
 };
 
-// ─── Add Scholarship Form ───────────────────────────────────
+// Add Scholarship Form 
 interface ScholarshipForm {
     title: string;
     provider: string;
@@ -191,7 +191,7 @@ const ManageScholarships = () => {
         <AdminLayout>
             <div className="space-y-6">
 
-                {/* ── Header ─────────────────────────────────── */}
+                {/* Header */}
                 <div className="flex items-center justify-between">
                     <div>
                         <h1 className="text-2xl font-bold text-primary">
@@ -210,7 +210,7 @@ const ManageScholarships = () => {
                     </Button>
                 </div>
 
-                {/* ── Stats ──────────────────────────────────── */}
+                {/* Stats */}
                 <div className="grid grid-cols-3 gap-4">
                     {[
                         {
@@ -241,7 +241,7 @@ const ManageScholarships = () => {
                     ))}
                 </div>
 
-                {/* ── Search ─────────────────────────────────── */}
+                {/* Search */}
                 <div className="relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                     <Input
@@ -252,7 +252,7 @@ const ManageScholarships = () => {
                     />
                 </div>
 
-                {/* ── Scholarship List ───────────────────────── */}
+                {/* Scholarship List */}
                 {isLoading && (
                     <div className="space-y-3">
                         {[1, 2, 3].map(i => (
@@ -355,7 +355,7 @@ const ManageScholarships = () => {
                 </div>
             </div>
 
-            {/* ── Add Scholarship Dialog ──────────────────── */}
+            {/* Add Scholarship Dialog */}
             <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
                 <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                     <DialogHeader>

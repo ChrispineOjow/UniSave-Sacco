@@ -172,7 +172,7 @@ const ManageStudents = () => {
         <AdminLayout>
             <div className="space-y-6">
 
-                {/* ── Header ─────────────────────────────────── */}
+                {/* Header */}
                 <div>
                     <h1 className="text-2xl font-bold text-primary">Manage Students</h1>
                     <p className="text-muted-foreground text-sm mt-1">
@@ -180,7 +180,7 @@ const ManageStudents = () => {
                     </p>
                 </div>
 
-                {/* ── Stats ──────────────────────────────────── */}
+                {/*  Stats */}
                 <div className="grid grid-cols-3 gap-4">
                     {[
                         {
@@ -211,7 +211,7 @@ const ManageStudents = () => {
                     ))}
                 </div>
 
-                {/* ── Filters ────────────────────────────────── */}
+                {/* Filters */}
                 <div className="flex flex-col md:flex-row gap-3 bg-white border rounded-lg p-4">
                     <div className="relative flex-1">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -239,7 +239,7 @@ const ManageStudents = () => {
                     </Select>
                 </div>
 
-                {/* ── Tabs ───────────────────────────────────── */}
+                {/*  Tabs  */}
                 <Tabs defaultValue="all">
                     <TabsList>
                         <TabsTrigger value="all">
