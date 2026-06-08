@@ -13,7 +13,6 @@ export const createStudentProfile = async (req, res)=>{
         }
         
         const {
-            studentAuthId, 
             firstName, 
             lastName, 
             surName, 
