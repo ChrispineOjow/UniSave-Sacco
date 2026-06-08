@@ -1,6 +1,7 @@
 import express from 'express';
 import{
     loginAdmin,
+    logoutAdmin,
     getPendingStudents,
     getAllStudents,
     approveStudent,
@@ -19,6 +20,7 @@ import {protectAdmin} from '../../middleware/auth.middleware.js';
 const adminRouter = express.Router();
 
 adminRouter.post('/login', loginAdmin);
+adminRouter.post('/logout', protectAdmin, logoutAdmin);
 
 adminRouter.get('/students/pending', protectAdmin, getPendingStudents);
 adminRouter.get('/students/all', protectAdmin, getAllStudents);

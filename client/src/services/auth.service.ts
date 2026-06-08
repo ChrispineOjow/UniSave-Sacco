@@ -1,5 +1,5 @@
 import api from "./api.ts";
-import type {AuthResponse} from "../types/index.ts";
+import type {AuthResponse} from "../types/index";
 
 
 export const registerStudent = async (data:{

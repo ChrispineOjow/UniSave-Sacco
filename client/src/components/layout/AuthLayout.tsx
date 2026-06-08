@@ -12,7 +12,7 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
     return (
         <div className="min-h-screen bg-background flex">
 
-            {/* ── Left Panel ───────────────────────────────── */}
+            {/* Left Panel */}
             <div className="hidden lg:flex lg:w-1/2 bg-primary flex-col justify-between p-12">
                 <Link to="/" className="flex items-center gap-2">
                     <GraduationCap className="w-8 h-8 text-accent" />
@@ -59,7 +59,7 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
                 </p>
             </div>
 
-            {/* ── Right Panel ──────────────────────────────── */}
+            {/* Right Panel */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center px-6 py-12 lg:px-16">
                 {/* Mobile Logo */}
                 <Link

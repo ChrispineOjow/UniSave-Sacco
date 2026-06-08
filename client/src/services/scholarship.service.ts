@@ -1,5 +1,5 @@
 import api from './api.ts';
-import type {Scholarship}from '../types/index.ts';
+import type {Scholarship}from '../types/index';
 
 
 interface ScholarshipResponse {

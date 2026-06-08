@@ -34,9 +34,19 @@ const Landing = () => {
         const fetchFeatured = async () => {
             try {
                 const data = await getAllScholarships();
-                setFeaturedScholarships(data.scholarships.slice(0, 3));
+                const scholarships = Array.isArray(data)
+                    ? data
+                    : data?.scholarships;
+
+                if (!Array.isArray(scholarships)) {
+                    console.error('Unexpected scholarships response:', data);
+                    setFeaturedScholarships([]);
+                } else {
+                    setFeaturedScholarships(scholarships.slice(0, 3));
+                }
             } catch(error) {
                 console.error('Error fetching scholarships:', error);
+                setFeaturedScholarships([]);
             } finally {
                 setIsLoading(false);
             }

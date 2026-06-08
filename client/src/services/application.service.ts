@@ -1,5 +1,5 @@
 import api from './api.ts';
-import type{ Application} from '../types/index.ts';
+import type{ Application} from '../types/index';
 
 interface ApplicationResponse{
     count:number;

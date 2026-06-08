@@ -74,8 +74,7 @@ export const logoutAdmin = async (req, res) => {
 
     try{
 
-        // logout is handled on the client side
-        message: "Logout Successful"
+        res.status(200).json({message: "Logout Successfull"})
 
     }catch(error){
 

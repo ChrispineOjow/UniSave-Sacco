@@ -38,7 +38,7 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className="min-h-screen bg-background flex">
 
-            {/* ── Mobile Overlay ─────────────────────────── */}
+            {/* Mobile Overlay*/}
             {sidebarOpen && (
                 <div
                     className="fixed inset-0 bg-black/50 z-20 lg:hidden"
@@ -46,12 +46,12 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
                 />
             )}
 
-            {/* ── Sidebar ────────────────────────────────── */}
+            {/*Sidebar*/}
             <aside className={`
-                fixed top-0 left-0 h-full w-64 bg-primary z-30
+                fixed top-0 left-0 h-screen w-64 bg-primary z-30
                 transform transition-transform duration-300
                 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-                lg:relative lg:translate-x-0 lg:flex lg:flex-col
+                lg:sticky lg:translate-x-0 lg:flex lg:flex-col
             `}>
                 {/* Logo */}
                 <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">

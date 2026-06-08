@@ -1,5 +1,5 @@
 import api from "./api.ts";
-import type{ StudentProfile} from "../types/index.ts";
+import type{ StudentProfile} from "../types/index";
 
 interface ProfileResponse {
     message: string;
