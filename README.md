@@ -1,6 +1,6 @@
 # UniSave Sacco 
 
-> Kenya's #1 Scholarship Discovery Platform — connecting university students with government, county, and private funding opportunities.
+> Kenya's Scholarship Discovery Platform — connecting university students with government, county, and private funding opportunities.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-green.svg)](https://nodejs.org)
