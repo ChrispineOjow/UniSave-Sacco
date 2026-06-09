@@ -29,7 +29,7 @@
 
 ## Overview
 
-UniSave Sacco is a full-stack web platform developed as a Diploma in Information Technology final year project at the Technical University of Kenya. It addresses the critical problem of university dropout caused by financial barriers by creating a centralized, intelligent scholarship discovery and tracking system for Kenyan university students.
+UniSave Sacco is a full-stack web platform I developed as a Diploma in Information Technology final year project at the Technical University of Kenya. It addresses the critical problem of university dropout caused by financial barriers by creating a centralized, intelligent scholarship discovery and tracking system for Kenyan university students.
 
 The platform aggregates scholarships from government portals (HELB, HEF), county governments (NG-CDF), and private foundations (Equity Wings to Fly, Mastercard Foundation), matches students to opportunities based on their profile using a Means Testing Instrument (MTI) scoring algorithm, and sends automated deadline reminders via email.
 
@@ -277,7 +277,7 @@ npm install
 Create a `.env` file in the server folder:
 
 ```bash
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/unisave
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/unisave
 JWT_SECRET=your_super_secret_jwt_key_here
 EMAIL_USER=your_gmail@gmail.com
 EMAIL_PASS=your_16_character_app_password
@@ -338,7 +338,7 @@ node scripts/runScrapers.js
 
 | Variable | Description | Example |
 |---|---|---|
-| `MONGO_URI` | MongoDB Atlas connection string | `mongodb+srv://...` |
+| `MONGODB_URI` | MongoDB Atlas connection string | `mongodb+srv://...` |
 | `JWT_SECRET` | Secret key for JWT signing | `unisave_secret_key` |
 | `EMAIL_USER` | Gmail address for sending emails | `app@gmail.com` |
 | `EMAIL_PASS` | Gmail App Password (16 chars) | `xxxx xxxx xxxx xxxx` |

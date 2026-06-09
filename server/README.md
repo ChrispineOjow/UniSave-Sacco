@@ -179,7 +179,7 @@ Create a `.env` file in the server root with these variables:
 
 ```bash
 # Database
-MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/unisave?retryWrites=true&w=majority
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/unisave?retryWrites=true&w=majority
 
 # Authentication
 JWT_SECRET=your_super_secret_jwt_key_minimum_32_characters
