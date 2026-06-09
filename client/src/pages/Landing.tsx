@@ -56,9 +56,9 @@ const Landing = () => {
     }, []);
 
     return (
-        <div className="min-h-screen bg-background font-sans">
+        <div className="min-h-screen bg-background font-sans overflow-x-hidden">
 
-            {/* ── Navbar ───────────────────────────────────── */}
+            {/* Navbar  */}
             <nav className="bg-primary text-white px-6 py-4 flex items-center justify-between shadow-md">
                 <div className="flex items-center gap-2">
                     <GraduationCap className="w-7 h-7 text-accent" />
@@ -83,13 +83,10 @@ const Landing = () => {
                 </div>
             </nav>
 
-            {/* ── Hero Section ─────────────────────────────── */}
+            {/* Hero Section  */}
             <section className="bg-primary text-white py-24 px-6">
                 <div className="max-w-4xl mx-auto text-center">
 
-                    <Badge className="bg-accent/20 text-accent border-accent/30 mb-6 px-4 py-1 text-sm">
-                        🎓 Kenya's #1 Scholarship Discovery Platform
-                    </Badge>
 
                     <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
                         Find Your Scholarship,{' '}
@@ -140,7 +137,7 @@ const Landing = () => {
                 </div>
             </section>
 
-            {/* ── Statistics Section ────────────────────────── */}
+            {/* Statistics Section */}
             <section className="bg-secondary py-16 px-6">
                 <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
                     {[
@@ -158,7 +155,7 @@ const Landing = () => {
                 </div>
             </section>
 
-            {/* ── How It Works Section ──────────────────────── */}
+            {/* How It Works Section  */}
             <section className="py-20 px-6 bg-background">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-14">
@@ -192,7 +189,7 @@ const Landing = () => {
                             }
                         ].map(({ step, icon: Icon, title, description }) => (
                             <div key={step} className="relative">
-                                <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-accent/30" />
+                                <div className="hidden md:block absolute top-8 left-[50%] w-full h-0.5 bg-accent/30" />
                                 <Card className="relative z-10 border-none shadow-md hover:shadow-lg transition-shadow">
                                     <CardContent className="p-6 text-center">
                                         <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
@@ -204,7 +201,7 @@ const Landing = () => {
                                         <h3 className="text-lg font-bold text-primary mt-1 mb-2">
                                             {title}
                                         </h3>
-                                        <p className="text-muted-foreground text-sm leading-relaxed">
+                                        <p className="text-muted-foreground text-sm leading-snug">
                                             {description}
                                         </p>
                                     </CardContent>
@@ -215,7 +212,7 @@ const Landing = () => {
                 </div>
             </section>
 
-            {/* ── Featured Scholarships ─────────────────────── */}
+            {/* Featured Scholarships */}
             <section className="py-20 px-6 bg-muted/30">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex items-center justify-between mb-10">
