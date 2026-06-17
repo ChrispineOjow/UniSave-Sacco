@@ -313,7 +313,7 @@ const Landing = () => {
                 </div>
             </section>
 
-            {/* ── Footer ───────────────────────────────────── */}
+            {/*  Footer  */}
             <footer className="bg-primary text-white py-12 px-6">
                 <div className="max-w-5xl mx-auto">
                     <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -367,7 +367,6 @@ const Landing = () => {
 
                     <div className="border-t border-white/20 pt-6 text-center text-white/50 text-sm">
                         © {new Date().getFullYear()} UniSave Sacco. All rights reserved.
-                        Built at Technical University of Kenya.
                     </div>
                 </div>
             </footer>
