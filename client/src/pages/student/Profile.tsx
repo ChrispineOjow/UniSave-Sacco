@@ -18,15 +18,15 @@ import toast from 'react-hot-toast';
 
 const kenyanCounties = [
     'Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret',
-    'Thika', 'Malindi', 'Kitale', 'Garissa', 'Kakamega',
-    'Nyeri', 'Machakos', 'Meru', 'Embu', 'Kisii',
+     'Malindi', 'Kitale', 'Garissa', 'Kakamega',
+    'Nyeri', 'Machakos', 'Meru', 'Embu',
     'Kilifi', 'Kwale', 'Lamu', 'Tana River', 'Taita Taveta',
     'Kajiado', 'Makueni', 'Nyandarua', 'Murang\'a', 'Kiambu',
     'Turkana', 'West Pokot', 'Samburu', 'Trans Nzoia', 'Uasin Gishu',
-    'Elgeyo Marakwet', 'Nandi', 'Baringo', 'Laikipia', 'Nakuru',
-    'Narok', 'Kericho', 'Bomet', 'Kakamega', 'Vihiga',
-    'Bungoma', 'Busia', 'Siaya', 'Kisumu', 'Homa Bay',
-    'Migori', 'Kisii', 'Nyamira', 'Nairobi'
+    'Elgeyo Marakwet', 'Nandi', 'Baringo', 'Laikipia',
+    'Narok', 'Kericho', 'Bomet',  'Vihiga',
+    'Bungoma', 'Busia', 'Siaya',  'Homa Bay',
+    'Migori', 'Kisii', 'Nyamira'
 ];
 
 const Profile = () => {
@@ -100,7 +100,7 @@ const Profile = () => {
         <StudentLayout>
             <div className="space-y-6 max-w-3xl">
 
-                {/* ── Header ─────────────────────────────────── */}
+                {/* Header  */}
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                         <User className="w-5 h-5 text-primary" />
@@ -116,17 +116,17 @@ const Profile = () => {
                     </div>
                 </div>
 
-                {/* ── Profile Incomplete Banner ──────────────── */}
+                {/* Profile Incomplete Banner */}
                 {!studentProfile && (
                     <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-amber-800 text-sm">
-                        ⚠️ Your profile is incomplete. Fill in your details below
+                        Your profile is incomplete. Fill in your details below
                         to get matched to scholarships.
                     </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
 
-                    {/* ── Personal Info ──────────────────────── */}
+                    {/* Personal Info */}
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-base text-primary">
@@ -218,7 +218,7 @@ const Profile = () => {
                         </CardContent>
                     </Card>
 
-                    {/* ── Academic Info ──────────────────────── */}
+                    {/*  Academic Info  */}
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-base text-primary">
@@ -304,7 +304,7 @@ const Profile = () => {
                         </CardContent>
                     </Card>
 
-                    {/* ── Location ───────────────────────────── */}
+                    {/*  Location  */}
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-base text-primary">
@@ -342,7 +342,7 @@ const Profile = () => {
                         </CardContent>
                     </Card>
 
-                    {/* ── Submit ─────────────────────────────── */}
+                    {/*  Submit  */}
                     <Button
                         type="submit"
                         className="w-full bg-primary hover:bg-primary-light text-white font-semibold"

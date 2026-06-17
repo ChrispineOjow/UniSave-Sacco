@@ -78,7 +78,7 @@ const Scholarships = () => {
         <StudentLayout>
             <div className="space-y-6">
 
-                {/* ── Header ─────────────────────────────────── */}
+                {/* Header */}
                 <div>
                     <h1 className="text-2xl font-bold text-primary">Scholarships</h1>
                     <p className="text-muted-foreground text-sm mt-1">
@@ -86,7 +86,7 @@ const Scholarships = () => {
                     </p>
                 </div>
 
-                {/* ── Filters ────────────────────────────────── */}
+                {/* Filters */}
                 <div className="bg-white rounded-lg border p-4">
                     <div className="flex flex-col md:flex-row gap-3">
 
@@ -154,7 +154,7 @@ const Scholarships = () => {
                     </div>
                 </div>
 
-                {/* ── Results Count ──────────────────────────── */}
+                {/* Results Count  */}
                 {!isLoading && (
                     <p className="text-sm text-muted-foreground">
                         Showing <span className="font-semibold text-primary">
@@ -163,7 +163,7 @@ const Scholarships = () => {
                     </p>
                 )}
 
-                {/* ── Loading ────────────────────────────────── */}
+                {/* Loading */}
                 {isLoading && (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[1, 2, 3, 4, 5, 6].map(i => (
@@ -179,7 +179,7 @@ const Scholarships = () => {
                     </div>
                 )}
 
-                {/* ── Empty ──────────────────────────────────── */}
+                {/* Empty */}
                 {!isLoading && scholarships.length === 0 && (
                     <div className="text-center py-16">
                         <Search className="w-12 h-12 mx-auto text-muted-foreground/30 mb-3" />
@@ -196,7 +196,7 @@ const Scholarships = () => {
                     </div>
                 )}
 
-                {/* ── Scholarship Cards ──────────────────────── */}
+                {/* Scholarship Cards */}
                 {!isLoading && scholarships.length > 0 && (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {scholarships.map(s => (

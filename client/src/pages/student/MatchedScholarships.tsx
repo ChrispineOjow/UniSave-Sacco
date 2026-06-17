@@ -59,7 +59,7 @@ const MatchedScholarships = () => {
         <StudentLayout>
             <div className="space-y-6">
 
-                {/* ── Header ─────────────────────────────────── */}
+                {/* Header */}
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                         <Sparkles className="w-5 h-5 text-purple-600" />
@@ -74,7 +74,7 @@ const MatchedScholarships = () => {
                     </div>
                 </div>
 
-                {/* ── No Profile Warning ─────────────────────── */}
+                {/* No Profile Warning */}
                 {!studentProfile && (
                     <div className="bg-amber-50 border border-amber-200 rounded-lg p-5 flex items-start gap-3">
                         <AlertCircle className="w-5 h-5 text-amber-600 mt-0.5 shrink-0" />
@@ -98,7 +98,7 @@ const MatchedScholarships = () => {
                     </div>
                 )}
 
-                {/* ── Match Stats ────────────────────────────── */}
+                {/* Match Stats */}
                 {!isLoading && studentProfile && (
                     <div className="bg-purple-50 border border-purple-100 rounded-lg p-4 flex items-center gap-4">
                         <Sparkles className="w-8 h-8 text-purple-500 shrink-0" />
@@ -113,7 +113,7 @@ const MatchedScholarships = () => {
                     </div>
                 )}
 
-                {/* ── Loading ────────────────────────────────── */}
+                {/* Loading */}
                 {isLoading && (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[1, 2, 3].map(i => (
@@ -129,7 +129,7 @@ const MatchedScholarships = () => {
                     </div>
                 )}
 
-                {/* ── Empty ──────────────────────────────────── */}
+                {/* Empty */}
                 {!isLoading && studentProfile && scholarships.length === 0 && (
                     <div className="text-center py-16">
                         <Sparkles className="w-12 h-12 mx-auto text-muted-foreground/30 mb-3" />
@@ -147,7 +147,7 @@ const MatchedScholarships = () => {
                     </div>
                 )}
 
-                {/* ── Matched Cards ──────────────────────────── */}
+                {/* Matched Cards */}
                 {!isLoading && scholarships.length > 0 && (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {scholarships.map(s => (

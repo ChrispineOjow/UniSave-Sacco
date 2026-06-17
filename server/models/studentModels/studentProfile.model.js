@@ -91,12 +91,11 @@ const studentProfileSchema = new mongoose.Schema({
 },  { timestamps: true})
 
 
-studentProfileSchema.pre('save', function(next){
+studentProfileSchema.pre('validate', function(next){
     if(this.MTI_Score !== undefined){
         this.MTI_Band = getMTIBand(this.MTI_Score);
     }
 
-    next();
 });
 
 const StudentProfile = mongoose.model('student_profile', studentProfileSchema);
