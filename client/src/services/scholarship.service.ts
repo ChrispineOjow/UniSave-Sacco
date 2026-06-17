@@ -1,5 +1,5 @@
 import api from './api.ts';
-import type {Scholarship}from '../types/index';
+import type {Scholarship, ScholarshipUpdatePayload}from '../types/index';
 
 
 interface ScholarshipResponse {
@@ -38,14 +38,14 @@ export const getMatchedScholarships = async()=>{
 
 //Admin
 export const addScholarship = async (data: Partial<Scholarship>)=>{
-    const response = await api.post('/admin/acholarships/add',data);
+    const response = await api.post('/admin/scholarships/add',data);
     return response.data;
 }
 
-export const updateScholarship = async (id: string, data: Partial<Scholarship>)=>{
-    const response = await api.patch(`/admin/scholarships/update/${id}`,data);
-    return response.data;
-}
+export const updateScholarship = async (id: string, payload: ScholarshipUpdatePayload) => {
+    const { data } = await api.patch(`/admin/scholarships/update/${id}`, payload);
+    return data;
+};
 
 export const deleteScholarship = async(id: string)=> {
     const response = await api.delete(`/admin/scholarships/delete/${id}`);
@@ -61,3 +61,4 @@ export const getAllScholarshipsAdmin = async () => {
     const response = await api.get<ScholarshipResponse>('/admin/scholarships/all');
     return response.data;
 }
+

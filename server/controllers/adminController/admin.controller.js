@@ -237,6 +237,35 @@ export const rejectStudent = async (req, res)=>{
     }
 }
 
+export const deleteStudent = async (req, res) => {
+    try {
+        const { studentId } = req.params;
+
+        const student = await StudentAuth.findById(studentId);
+
+        if (!student) {
+            return res.status(404).json({ message: 'Student not found' });
+        }
+
+        await Promise.all([
+            StudentProfile.deleteOne({ studentAuthId: studentId }),
+            Application.deleteMany({ studentId: studentId }),
+            StudentAuth.findByIdAndDelete(studentId)
+        ]);
+
+        return res.status(200).json({ message: 'Student and all associated data deleted successfully' });
+
+    } catch (error) {
+        console.error('CRASH LOG FOR DELETE_STUDENT:', error);
+
+        if (error.name === 'CastError') {
+            return res.status(400).json({ message: 'Invalid student ID' });
+        }
+
+        return res.status(500).json({ message: 'Failed to delete student' });
+    }
+};
+
 
 //Create Another Admin (Only for super admins)
 export const createAdmin = async (req, res)=> {
@@ -533,3 +562,26 @@ export const getAllApplications = async(req, res)=> {
 
     }
 }
+
+export const getStudentProfileById = async (req, res) => {
+    try {
+        const { studentAuthId } = req.params;
+
+        const profile = await StudentProfile.findOne({ studentAuthId });
+
+        if (!profile) {
+            return res.status(404).json({ message: 'Profile not found for this student' });
+        }
+
+        return res.status(200).json({ profile });
+
+    } catch (error) {
+        console.error('CRASH LOG FOR GET_STUDENT_PROFILE:', error);
+
+        if (error.name === 'CastError') {
+            return res.status(400).json({ message: 'Invalid student ID' });
+        }
+
+        return res.status(500).json({ message: 'Failed to fetch student profile' });
+    }
+};

@@ -82,7 +82,7 @@ export const loginStudent = async (req, res)=>{
 
         const {email, password} = req.body;
 
-        const student = await StudentAuth.findOne({ email});
+        const student = await StudentAuth.findOne({ email: req.body.email.toLowerCase().trim() });
         // check if student exists
         if(!student){
             return res.status(404).json(

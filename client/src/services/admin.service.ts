@@ -40,3 +40,13 @@ export const updateApplicationStatusAdmin = async (
     const response = await api.patch(`/admin/applications/update/${id}`, { status });
     return response.data;
 };
+
+export const getStudentProfile = async (studentAuthId: string) => {
+    const { data } = await api.get(`/admin/students/${studentAuthId}/profile`);
+    return data;
+};
+
+export const deleteStudent = async (studentId: string) => {
+    const { data } = await api.delete(`/admin/students/${studentId}`);
+    return data;
+};

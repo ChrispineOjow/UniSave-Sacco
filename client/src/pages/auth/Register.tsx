@@ -144,7 +144,7 @@ const Register = () => {
 
                 {/* Info Box */}
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-700">
-                    ℹ️ After registration your account will be reviewed by an admin
+                    ! After registration your account will be reviewed by an admin
                     before you can log in. This usually takes 24 hours.
                 </div>
 

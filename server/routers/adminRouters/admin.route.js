@@ -13,7 +13,9 @@ import{
     verifyScholarship,
     getAllScholarshipsAdmin,
     updateApplicationStatus,
-    getAllApplications
+    getAllApplications,
+    getStudentProfileById,
+    deleteStudent
 } from '../../controllers/adminController/admin.controller.js';
 import {protectAdmin} from '../../middleware/auth.middleware.js';
 
@@ -27,6 +29,8 @@ adminRouter.get('/students/all', protectAdmin, getAllStudents);
 adminRouter.patch('/students/:studentId/approve', protectAdmin, approveStudent);
 adminRouter.patch('/students/:studentId/reject', protectAdmin, rejectStudent);
 adminRouter.post('/create', protectAdmin, createAdmin);
+adminRouter.get('/students/:studentAuthId/profile', protectAdmin, getStudentProfileById);
+adminRouter.delete('/students/:studentId', protectAdmin, deleteStudent);
 
 
 //Scholarship routes

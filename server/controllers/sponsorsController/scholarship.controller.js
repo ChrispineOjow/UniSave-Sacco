@@ -131,3 +131,61 @@ export const getMatchedSholarships = async (req, res)=> {
         )
     }
 }
+
+export const  updateScholarship = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+
+        
+        delete updates._id;
+        delete updates.isVerified; 
+        delete updates.createdAt;
+
+        const scholarship = await Scholarship.findById(id);
+
+        if (!scholarship) {
+            return res.status(404).json({ message: 'Scholarship not found' });
+        }
+
+        
+        if (updates.dates) {
+            scholarship.dates = { ...scholarship.dates.toObject(), ...updates.dates };
+            scholarship.markModified('dates');
+            delete updates.dates;
+        }
+        if (updates.funding) {
+            scholarship.funding = { ...scholarship.funding.toObject(), ...updates.funding };
+            scholarship.markModified('funding');
+            delete updates.funding;
+        }
+        if (updates.application) {
+            scholarship.application = { ...scholarship.application.toObject(), ...updates.application };
+            scholarship.markModified('application');
+            delete updates.application;
+        }
+
+        Object.assign(scholarship, updates);
+
+
+        await scholarship.save();
+
+
+        return res.status(200).json({
+            message: 'Scholarship updated successfully',
+            scholarship
+        });
+
+    } catch (error) {
+        console.error('CRASH LOG FOR UPDATE_SCHOLARSHIP:', error);
+
+        if (error.name === 'ValidationError') {
+            return res.status(400).json({ message: error.message });
+        }
+        if (error.name === 'CastError') {
+            return res.status(400).json({ message: 'Invalid scholarship ID' });
+        }
+
+        return res.status(500).json({ message: 'Failed to update scholarship' });
+    }
+};

@@ -197,7 +197,7 @@ const Applications = () => {
         <StudentLayout>
             <div className="space-y-6">
 
-                {/* ── Header ─────────────────────────────────── */}
+                
                 <div>
                     <h1 className="text-2xl font-bold text-primary">My Applications</h1>
                     <p className="text-muted-foreground text-sm mt-1">
@@ -205,7 +205,7 @@ const Applications = () => {
                     </p>
                 </div>
 
-                {/* ── Stats ──────────────────────────────────── */}
+                
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
                     {Object.entries(statusConfig).map(([status, config]) => (
                         <Card key={status}>
@@ -221,7 +221,7 @@ const Applications = () => {
                     ))}
                 </div>
 
-                {/* ── Tabs ───────────────────────────────────── */}
+                
                 <Tabs defaultValue="all">
                     <TabsList className="bg-muted">
                         <TabsTrigger value="all">All</TabsTrigger>

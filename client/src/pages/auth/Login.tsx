@@ -49,7 +49,11 @@ const Login = ({ isAdmin = false }: LoginProps) => {
 
             } else {
                 // Student login
-                const data = await loginStudent(formData);
+                const sanitizedFormData = {
+                    ...formData,
+                    email : formData.email.toLowerCase().trim()
+                }
+                const data = await loginStudent(sanitizedFormData);
                 setStudentAuth(
                     data.token,
                     data.student as unknown as StudentAuth,

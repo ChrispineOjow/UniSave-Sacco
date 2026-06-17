@@ -32,6 +32,7 @@ export interface StudentProfile{
 }
 
 export interface Scholarship {
+    source: string;
     _id: string;
     title: string;
     provider: string;
@@ -106,4 +107,21 @@ export interface AuthResponse{
         profile: StudentProfile | null;
     };
     admin?:Admin;
+}
+
+export interface ScholarshipUpdatePayload {
+    title?: string;
+    provider?: string;
+    category?: Scholarship['category'];
+    description?: string;
+    link?: string;
+    logoUrl?: string;
+    eligibility?: Partial<Scholarship['eligibility']>;
+    funding?: Partial<Scholarship['funding']>;
+    dates?: Partial<Scholarship['dates']>;
+    application?: Partial<Scholarship['application']>;
+    isVerified?: boolean;
+    isActive?: boolean;
+    isFeatured?: boolean;
+    source?: string;
 }

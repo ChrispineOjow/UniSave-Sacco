@@ -19,7 +19,7 @@ import { getMyApplications } from '@/services/application.service';
 import { useAuth } from '@/context/AuthContext';
 import type { Scholarship, Application } from '@/types/index';
 
-// ─── Status Config ──────────────────────────────────────────
+ 
 const statusConfig: Record<string, { color: string; icon: React.ReactNode }> = {
     Saved:    { color: 'bg-blue-100 text-blue-700',   icon: <BookmarkCheck className="w-3 h-3" /> },
     Applied:  { color: 'bg-yellow-100 text-yellow-700', icon: <Clock className="w-3 h-3" /> },
@@ -68,7 +68,7 @@ const Dashboard = () => {
         <StudentLayout>
             <div className="space-y-6">
 
-                {/* ── Profile Incomplete Warning ─────────────── */}
+                {/*  Profile Incomplete Warning  */}
                 {!studentProfile && (
                     <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-center justify-between">
                         <div>
@@ -90,7 +90,7 @@ const Dashboard = () => {
                     </div>
                 )}
 
-                {/* ── Stats Cards ────────────────────────────── */}
+                {/*  Stats Cards  */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     {[
                         {
@@ -145,11 +145,11 @@ const Dashboard = () => {
 
                 <div className="grid lg:grid-cols-2 gap-6">
 
-                    {/* ── Urgent Deadlines ───────────────────── */}
+                    {/* Urgent Deadlines */}
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between pb-3">
                             <CardTitle className="text-base font-semibold text-primary">
-                                ⏰ Urgent Deadlines
+                                Urgent Deadlines
                             </CardTitle>
                             <Link to="/scholarships">
                                 <Button variant="ghost" size="sm" className="text-secondary text-xs">
@@ -167,7 +167,7 @@ const Dashboard = () => {
                             )}
                             {!isLoading && urgent.length === 0 && (
                                 <p className="text-muted-foreground text-sm text-center py-6">
-                                    No urgent deadlines — you're on track! ✅
+                                    No urgent deadlines — you're on track! 
                                 </p>
                             )}
                             {!isLoading && urgent.map(s => {
@@ -197,11 +197,11 @@ const Dashboard = () => {
                         </CardContent>
                     </Card>
 
-                    {/* ── Recent Applications ────────────────── */}
+                    {/* Recent Applications  */}
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between pb-3">
                             <CardTitle className="text-base font-semibold text-primary">
-                                📋 Recent Applications
+                                Recent Applications
                             </CardTitle>
                             <Link to="/applications">
                                 <Button variant="ghost" size="sm" className="text-secondary text-xs">
@@ -256,7 +256,7 @@ const Dashboard = () => {
                     </Card>
                 </div>
 
-                {/* ── Quick Actions ──────────────────────────── */}
+                {/* Quick Actions  */}
                 <Card>
                     <CardHeader className="pb-3">
                         <CardTitle className="text-base font-semibold text-primary">
