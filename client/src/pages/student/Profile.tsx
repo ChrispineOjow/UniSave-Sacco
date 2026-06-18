@@ -1,4 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom'; // 1. Added import
 import { Loader2, Save, User } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -17,19 +18,23 @@ import { useAuth } from '@/context/AuthContext';
 import toast from 'react-hot-toast';
 
 const kenyanCounties = [
-    'Nairobi', 'Mombasa', 'Kisumu', 'Nakuru', 'Eldoret',
-     'Malindi', 'Kitale', 'Garissa', 'Kakamega',
-    'Nyeri', 'Machakos', 'Meru', 'Embu',
-    'Kilifi', 'Kwale', 'Lamu', 'Tana River', 'Taita Taveta',
-    'Kajiado', 'Makueni', 'Nyandarua', 'Murang\'a', 'Kiambu',
-    'Turkana', 'West Pokot', 'Samburu', 'Trans Nzoia', 'Uasin Gishu',
-    'Elgeyo Marakwet', 'Nandi', 'Baringo', 'Laikipia',
-    'Narok', 'Kericho', 'Bomet',  'Vihiga',
-    'Bungoma', 'Busia', 'Siaya',  'Homa Bay',
-    'Migori', 'Kisii', 'Nyamira'
+    'Baringo', 'Bomet', 'Bungoma', 'Busia',
+    'Elgeyo Marakwet', 'Eldoret', 'Embu',
+    'Garissa',
+    'Homa Bay',
+    'Kajiado', 'Kakamega', 'Kericho', 'Kiambu', 'Kilifi', 'Kisii', 'Kisumu', 'Kitale', 'Kwale',
+    'Laikipia', 'Lamu',
+    'Machakos', 'Makueni', 'Malindi', 'Meru', 'Migori', 'Mombasa', 'Murang\'a',
+    'Nairobi', 'Nakuru', 'Nandi', 'Narok', 'Nyandarua', 'Nyamira', 'Nyeri',
+    'Samburu', 'Siaya',
+    'Taita Taveta', 'Tana River', 'Trans Nzoia', 'Turkana',
+    'Uasin Gishu',
+    'Vihiga',
+    'West Pokot'
 ];
 
 const Profile = () => {
+    const navigate = useNavigate(); // 2. Initialized navigation hook
     const { student, studentProfile, updateStudentProfile } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -61,18 +66,18 @@ const Profile = () => {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+        e.preventDefault();
+        setIsLoading(true);
 
-    const payload = {
-        ...formData,
-        gender: formData.gender as 'Male' | 'Female',  
-        age: Number(formData.age),
-        yearOfStudy: Number(formData.yearOfStudy),
-        gpa: Number(formData.gpa),
-        MTI_Score: Number(formData.MTI_Score),
-        disability: formData.disability === 'true'
-    };
+        const payload = {
+            ...formData,
+            gender: formData.gender as 'Male' | 'Female',  
+            age: Number(formData.age),
+            yearOfStudy: Number(formData.yearOfStudy),
+            gpa: Number(formData.gpa),
+            MTI_Score: Number(formData.MTI_Score),
+            disability: formData.disability === 'true'
+        };
 
         try {
             let data;
@@ -87,6 +92,9 @@ const Profile = () => {
             }
 
             updateStudentProfile(data.profile || data.studentProfile);
+            
+            // 3. Kick off route redirection to student dashboard layout path
+            navigate('/dashboard');
 
         } catch(error: unknown) {
             const err = error as { response?: { data?: { message?: string } } };
@@ -218,7 +226,7 @@ const Profile = () => {
                         </CardContent>
                     </Card>
 
-                    {/*  Academic Info  */}
+                    {/* Academic Info   */}
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-base text-primary">
@@ -304,7 +312,7 @@ const Profile = () => {
                         </CardContent>
                     </Card>
 
-                    {/*  Location  */}
+                    {/* Location   */}
                     <Card>
                         <CardHeader>
                             <CardTitle className="text-base text-primary">
@@ -342,7 +350,7 @@ const Profile = () => {
                         </CardContent>
                     </Card>
 
-                    {/*  Submit  */}
+                    {/* Submit   */}
                     <Button
                         type="submit"
                         className="w-full bg-primary hover:bg-primary-light text-white font-semibold"

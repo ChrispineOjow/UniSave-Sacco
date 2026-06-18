@@ -358,7 +358,7 @@ const Landing = () => {
                         <div>
                             <h4 className="font-semibold mb-3 text-accent">Contact</h4>
                             <ul className="space-y-2 text-white/70 text-sm">
-                                <li>Technical University of Kenya</li>
+                                <li>Unisave Sacco Kenya</li>
                                 <li>support@unisave.co.ke</li>
                                 <li>Nairobi, Kenya</li>
                             </ul>

@@ -150,9 +150,6 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
                     </div>
 
                     <div className="flex items-center gap-3 ml-auto">
-                        <Button variant="ghost" size="icon" className="text-muted-foreground">
-                            <Bell className="w-5 h-5" />
-                        </Button>
                         <Avatar className="w-8 h-8">
                             <AvatarFallback className="bg-primary text-white text-xs font-bold">
                                 {admin?.email[0].toUpperCase() || 'A'}

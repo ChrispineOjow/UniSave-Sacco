@@ -66,9 +66,7 @@ const Login = ({ isAdmin = false }: LoginProps) => {
                     navigate('/dashboard');
                 } else {
                     navigate('/profile');
-                    toast('Please complete your profile to get matched scholarships', {
-                        icon: '👋'
-                    });
+                    toast('Please complete your profile to get matched scholarships');
                 }
             }
 

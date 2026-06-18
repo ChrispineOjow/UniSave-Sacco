@@ -6,7 +6,7 @@ function getMTIBand(score) {
     } else if (score <= 75){
         return 'Less Needy';
     } else {
-        return 'Well-off';
+        return 'Well off';
     }
 }
 

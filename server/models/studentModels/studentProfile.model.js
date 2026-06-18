@@ -74,7 +74,7 @@ const studentProfileSchema = new mongoose.Schema({
     },
     MTI_Band:{
         type: String,
-        enum: ['Vulnerable', 'Extremely Needy', 'Needy', 'Less Needy'],
+        enum: ['Vulnerable', 'Needy',  'Less Needy', 'Well off'],
         required: true
     },
     yearOfStudy:{
