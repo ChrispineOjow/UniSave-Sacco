@@ -66,7 +66,7 @@ const Profile = () => {
 
     const payload = {
         ...formData,
-        gender: formData.gender as 'Male' | 'Female',  // ✅ cast here
+        gender: formData.gender as 'Male' | 'Female',  
         age: Number(formData.age),
         yearOfStudy: Number(formData.yearOfStudy),
         gpa: Number(formData.gpa),

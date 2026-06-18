@@ -9,7 +9,8 @@ import {
     Menu,
     X,
     ShieldCheck,
-    Bell
+    Bell,
+    Archive
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -21,6 +22,7 @@ const navItems = [
     { label: 'Dashboard',         to: '/admin/dashboard',    icon: LayoutDashboard },
     { label: 'Manage Students',   to: '/admin/students',     icon: Users },
     { label: 'Manage Scholarships', to: '/admin/scholarships', icon: BookOpen },
+    {label: 'Archive', to: '/admin/archive', icon: Archive}
 ];
 
 const AdminLayout = ({ children }: { children: ReactNode }) => {

@@ -15,7 +15,10 @@ import{
     updateApplicationStatus,
     getAllApplications,
     getStudentProfileById,
-    deleteStudent
+    deleteStudent,
+    getActiveScholarships,
+    toggleArchivedScholarship,
+    getArchivedScholarships
 } from '../../controllers/adminController/admin.controller.js';
 import {protectAdmin} from '../../middleware/auth.middleware.js';
 
@@ -39,6 +42,9 @@ adminRouter.get("/scholarships/all", protectAdmin, getAllScholarshipsAdmin);
 adminRouter.patch("/scholarships/update/:id", protectAdmin, updateScholarship);
 adminRouter.delete("/scholarships/delete/:id", protectAdmin, deleteScholarship);
 adminRouter.patch("/scholarships/verify/:id", protectAdmin, verifyScholarship);
+adminRouter.get("/scholarships/active", protectAdmin, getActiveScholarships);
+adminRouter.patch("/scholarships/archive/:id", protectAdmin, toggleArchivedScholarship);
+adminRouter.get("/scholarships/archived/all", protectAdmin, getArchivedScholarships);
 
 //Application routes
 adminRouter.patch("/applications/update/:id", protectAdmin, updateApplicationStatus);

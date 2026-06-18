@@ -50,3 +50,8 @@ export const deleteStudent = async (studentId: string) => {
     const { data } = await api.delete(`/admin/students/${studentId}`);
     return data;
 };
+
+export const getAllScholarshipsAdmin = async () => {
+    const response = await api.get('/admin/scholarships/all');
+    return response.data;
+};

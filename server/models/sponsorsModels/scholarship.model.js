@@ -82,7 +82,8 @@ const ScholarshipsSchema = new mongoose.Schema({
     isVerified: {type: Boolean, default: false},
     isActive: {type:Boolean, default: true},
     isFeatured: {type: Boolean, default: false},
-    lastScrapedAt:{type: Date}
+    lastScrapedAt:{type: Date},
+     isArchived:{type:Boolean, default:false}
 
 }, {timestamps:true});
 

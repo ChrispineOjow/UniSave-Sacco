@@ -54,8 +54,7 @@ const AuthLayout = ({ children, title, subtitle }: AuthLayoutProps) => {
                 </div>
 
                 <p className="text-white/40 text-sm">
-                    © {new Date().getFullYear()} UniSave Sacco —
-                    Technical University of Kenya
+                    © {new Date().getFullYear()} UniSave Sacco 
                 </p>
             </div>
 

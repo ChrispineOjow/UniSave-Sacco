@@ -13,6 +13,8 @@ import Profile from './pages/student/Profile';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ManageStudents from './pages/admin/ManageStudents';
 import ManageScholarships from './pages/admin/ManageScholarships';
+import ArchivedScholarships from './pages/admin/ArchivedScholarship';
+
 
 const StudentRoute = ({ children }: { children: ReactNode }) => {
     const { isStudentLoggedIn, isLoading } = useAuth();
@@ -41,6 +43,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/admin/login" element={<Login isAdmin />} />
+            
 
             <Route path="/dashboard" element={<StudentRoute><Dashboard /></StudentRoute>} />
             <Route path="/scholarships" element={<StudentRoute><Scholarships /></StudentRoute>} />
@@ -51,6 +54,8 @@ const App = () => {
             <Route path="/admin/dashboard" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
             <Route path="/admin/students" element={<AdminRoute><ManageStudents /></AdminRoute>} />
             <Route path="/admin/scholarships" element={<AdminRoute><ManageScholarships /></AdminRoute>} />
+            <Route path="/admin/archive" element={<AdminRoute><ArchivedScholarships/></AdminRoute>}/>
+            
 
             <Route path="*" element={<Navigate to="/" />} />
         </Routes>

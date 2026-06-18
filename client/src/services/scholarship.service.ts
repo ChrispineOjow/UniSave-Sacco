@@ -50,15 +50,29 @@ export const updateScholarship = async (id: string, payload: ScholarshipUpdatePa
 export const deleteScholarship = async(id: string)=> {
     const response = await api.delete(`/admin/scholarships/delete/${id}`);
     return response.data;
-}
+};
 
 export const verifyScholarship = async(id: string)=>{
     const response = await api.patch(`/admin/scholarships/verify/${id}`);
     return response.data;
-}
+};
 
 export const getAllScholarshipsAdmin = async () => {
     const response = await api.get<ScholarshipResponse>('/admin/scholarships/all');
     return response.data;
-}
+};
 
+export const getActiveScholarships = async () => {
+    const { data } = await api.get('/admin/scholarships/active');
+    return data;
+};
+
+export const toggleArchiveScholarship = async (scholarshipId: string) => {
+    const { data } = await api.patch(`/admin/scholarships/archive/${scholarshipId}`);
+    return data;
+};
+
+export const getArchivedScholarships = async () => {
+    const { data } = await api.get('/admin/scholarships/archived/all');
+    return data;
+}

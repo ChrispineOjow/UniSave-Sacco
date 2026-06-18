@@ -585,3 +585,58 @@ export const getStudentProfileById = async (req, res) => {
         return res.status(500).json({ message: 'Failed to fetch student profile' });
     }
 };
+
+export const getActiveScholarships = async (req, res) => {
+    try{
+
+        const today = new Date();
+
+        const scholarships = await Scholarship.find({
+            isArchived: false,
+            isActive:true,
+            'dates.deadline': {$gte: today}
+        });
+        res.status(200).json(scholarships);
+    }catch(error){
+        res.status(500).json({message: error.message});
+    }
+};
+
+export const toggleArchivedScholarship = async (req, res) => {
+    const {id} = req.params;
+    try{
+        const item = await Scholarship.findById(id);
+        if(!item) return res.status(404).json({message: "Item not found"});
+
+        item.isArchived = !item.isArchived;
+        await item.save();
+
+        return res.status(200).json({
+            message: `Scholarship successfully ${item.isArchived ? 'archived' : 'restored'}`,
+            item
+        })
+
+    }catch(error){
+        res.status(500).json({message: error.message});
+    }
+}
+
+
+export const getArchivedScholarships = async (req, res) => {
+    try {
+        
+        const today = new Date();
+        
+        const archived = await Scholarship.find({
+            $or: [
+                { isArchived: true },
+                { 'dates.deadline': { $lt: today } },
+                { isActive: false } 
+            ]
+        });
+        
+        res.status(200).json({ scholarships: archived });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
