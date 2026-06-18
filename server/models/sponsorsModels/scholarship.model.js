@@ -57,6 +57,7 @@ const ScholarshipsSchema = new mongoose.Schema({
         announcementDate: {type: Date},
         academicYear: {type: String}
     },
+    isActive: {type:Boolean, default: true},
 
 
     //Application details
