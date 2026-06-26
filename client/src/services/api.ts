@@ -31,13 +31,14 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         if(error.response?.status === 401){
+            const isAdminRoute = error.config.url?.includes('/admin');
             //Token expired - clear storage and redirect login
             localStorage.removeItem('studentToken');
             localStorage.removeItem('student');
             localStorage.removeItem('studentProfile');
             localStorage.removeItem('adminToken');
             localStorage.removeItem('admin');
-            window.location.href = '/login';
+            window.location.href = isAdminRoute? '/admin/login' : '/login';
         }
 
         return Promise.reject(error);
